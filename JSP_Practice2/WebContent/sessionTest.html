@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#content table>tbody>tr:nth-child(3)>td{
+		text-align: center;
+	}
+	.w100{
+		width: 100px;
+	}
+</style>
+</head>
+<body>
+	<h1>LOGIN</h1>
+	<article id="content">
+		<form action="SessionBirth1" method="post">
+			<table>
+			<tbody>
+				<tr>
+					<td><label for="u_name">이름:</label></td>
+					<td><input type="text" id="u_name" name="m_name"/><br/></td>
+				</tr>
+				<tr>
+					<td><label for="u_birth">생년월일(YYYYMMDD):</label></td>
+					<td><input type="text" id="u_birth" name="m_birth"/><br/></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="button" value="보내기" onclick="send()"/></td>
+					
+				</tr>
+			</tbody>
+			</table>
+		</form>
+	</article>
+	
+	<script>
+		function send(){
+			document.forms[0].submit();
+		}
+	</script>
+</body>
+</html>

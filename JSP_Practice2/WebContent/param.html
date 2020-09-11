@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>파라미터</h1>
+	<article>
+		<form action="ParamServlet" method="post">
+			<label for="head">전화번호: </label>
+			<select id="head" name="c_phone">
+				<option>010</option>
+				<option>011</option>
+				<option>017</option>
+			</select>
+			<label for="body">-</label><input type="text" id="body" name="c_phone"/>
+			<label for="tail">-</label><input type="text" id="tail" name="c_phone"/>
+			<br/>
+			
+			<label for="hobby">취미: </label>
+			<input type="checkbox" id="hobby1" name="hobby" value="영화감상"/><label for="hobby1">영화감상</label>
+			<input type="checkbox" id="hobby2" name="hobby" value="음악감상"/><label for="hobby2">음악감상</label>
+			<input type="checkbox" id="hobby3" name="hobby" value="게임"/><label for="hobby3">게임</label>
+			<input type="button" value="보내기" onclick="send()"/>
+		</form>
+	</article>
+	
+	<script>
+		function send(){
+			document.forms[0].submit();
+		}
+	</script>
+</body>
+</html>
