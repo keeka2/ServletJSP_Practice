@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+  <insert id="insertUser" parameterType="test2.vo.UserVO">
+  	insert into user_ (name,email,id,pw) values (#{name},#{email},#{id},#{pw})
+  </insert>
+  
+  <select id="total" resultType="test2.vo.UserVO">
+  	select * from user_
+  </select>
+  
+  <select id="search_id" resultType="test2.vo.UserVO" parameterType="String">
+  	select * from user_ where id=#{id}
+  </select>
+  
+</mapper>

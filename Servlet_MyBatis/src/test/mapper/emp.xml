@@ -11,4 +11,10 @@
   	select * from emp
   	where ename like '%'||#{name}||'%' 
   </select>
+  
+  <select id="search_no" resultType="test.vo.EmpVO" parameterType="String">
+  	select * from emp where empno=#{empno} 
+  </select>
+  
+  
 </mapper>
