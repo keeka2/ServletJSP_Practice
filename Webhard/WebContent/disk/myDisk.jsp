@@ -250,7 +250,7 @@ public String before(String now, MemberVO mvo){
 						<%=f.getName() %>
 					</a>
 					<%}else{ %>
-					<a href="javascript:down('')">
+					<a href="javascript:down('<%=f.getName() %>')">
 						<%=f.getName() %>
 					</a>
 				<%} %>

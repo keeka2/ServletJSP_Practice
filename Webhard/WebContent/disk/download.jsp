@@ -27,10 +27,46 @@
 		FileInputStream fis = null;
 		
 		//사용자 pc에 저장하기 위한 스트림
-		BufferedOutputStream os = null;
+		
+		BufferedOutputStream bos = null;
 		ServletOutputStream sos = null; //다운로드 하는것은 jsp입장에서는 응답을 하는 것
 		//접속자 pc로 다운로드를 시켜야 하기 때문에 response를 통해 스트림을 생성해야 한다.
 		//그것이 바로 ServletOutputStream이다.
+		
+		try{
+			//접속자 화면에 다운로드 창을 보여줌
+			response.setContentType("application/x-msdownload");
+			response.setHeader("Content-Disposition","attachment;filename="+new String(fname.getBytes(),"8859_1"));
+			
+			out.clear();
+			out = pageContext.pushBody();
+			//다운로드할 file과 연결되는 스트림 생성
+			fis = new FileInputStream(f);
+			bis = new BufferedInputStream(fis);
+			
+			//response를 통해 이미 out이라는 생성된 스트림이 존재하기 때문에 오류가 발생
+			//그것을 잠깐 지워줘야 한다
+			
+			sos = response.getOutputStream();
+			bos = new BufferedOutputStream(sos);
+			
+			while((size = bis.read(buf)) != -1 ){
+				bos.write(buf, 0, size);
+				bos.flush();
+			}//반복문의 끝
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(fis != null){fis.close();}
+				if(bis != null){bis.close();}
+				if(sos != null){sos.close();}
+				if(bos != null){bos.close();}
+				
+			}catch(Exception e){
+				
+			}
+		}
 	}
 %>
 <!DOCTYPE html>
