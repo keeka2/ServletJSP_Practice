@@ -109,6 +109,7 @@ public class ProductVO {
 	}
 
 	public void setQuant(int quant) {
+		System.out.println("quant: "+quant);
 		this.quant = quant;
 		//수량이 변경될 때 자동적으로
 		//총액도 다시 구해져야 한다. (수량 * 세일가격)

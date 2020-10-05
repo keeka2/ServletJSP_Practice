@@ -6,8 +6,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	#title{
+		font-size:30px;
+		color: maroon;
+	}
+	.txt_c{text-align: center}
+       a:link{text-decoration:none; color:navy}
+       a:visited{text-decoration:none; color:navy}
+       a:hover{text-decoration:none; color:red}
+	.empty{
+		text-align: center;
+		height: 50px;
+		line-height: 50px;
+		font-size: 12px;
+	}
+</style>
 </head>
 <body>
+<jsp:include page="nav.jsp"/>
 <%
 	//요청시 한글처리
 	request.setCharacterEncoding("utf-8");
