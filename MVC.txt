@@ -1,3 +1,9 @@
-모델
-뷰
-컨트롤러 - 서블릿
+사용자 요청 -> [컨트롤러(서블릿)] <-> [BEAN <-> DAO] (모델)
+     |		|
+     -----------[jsp<- (뷰 - 화면에 대한 요청)]
+
+MVC는 forward를 기반
+컨트롤러 : 서블릿(방향성)
+데이터베이스 연결 : MyBatis(factoryService -> config.xml -> Mapper.xml => VO객체
+			                  -> DAO (jsp에서 쓰는 것을 권장하지 않음)
+		컨트롤러(서블릿) <-> 해당 bean <-> DAO <-> DB
