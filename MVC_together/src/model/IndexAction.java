@@ -1,8 +1,13 @@
 package model;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import mybatis.dao.MemoDAO;
+import mybatis.vo.MemoVO;
 
 public class IndexAction implements Action {
 	@Override
@@ -17,6 +22,8 @@ public class IndexAction implements Action {
 			//X
 			request.setAttribute("login_chk", false);
 		}
+		List<MemoVO> list3 = MemoDAO.getList3();
+		request.setAttribute("list3", list3);
 		return "/Jsp/index.jsp";
 	}
 }

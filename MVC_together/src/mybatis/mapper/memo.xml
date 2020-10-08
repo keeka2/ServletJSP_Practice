@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="memo">
+	
+	<!-- 목록을 만들기위한 SELECT -->
+	<select id="total" resultType="mybatis.vo.MemoVO">
+		SELECT * FROM memo_t 
+		ORDER BY idx DESC
+	</select>
+	
+	<select id="total3" resultType="mybatis.vo.MemoVO">
+		SELECT * FROM memo_t WHERE ROWNUM  <![CDATA[<=]]>3 ORDER BY idx DESC
+	</select>
+	
+	
+	<!-- 저장을 위한 INSERT -->
+	<insert id="add" parameterType="java.util.Map">
+		INSERT INTO memo_t(idx, writer, content, reg_date, ip)
+		VALUES(memo_seq.NEXTVAL, #{writer}, #{content}, sysdate, #{ip})
+	</insert>
+	
+	
+	<!-- 보기를 위한 SELECT -->
+	<select id="get_memo" resultType="mybatis.vo.MemoVO" parameterType="String">
+		SELECT * FROM memo_t
+		WHERE idx = #{idx}
+	</select>
+	
+	
+	<!-- 검색을 위한 SELECT (동적쿼리) -->
+	<select id="search" parameterType="java.util.Map" resultType="mybatis.vo.MemoVO">
+		SELECT * FROM memo_t
+		<if test="searchType != null and searchValue != null">
+			<trim prefix="where">
+				<choose>
+					<when test="searchType == 0">
+						writer LIKE '%'||#{searchValue}||'%'
+					</when>
+					<when test="searchType == 1">
+						content LIKE '%'||#{searchValue}||'%'
+					</when>
+					<when test="searchType == 2">
+						to_char(reg_date,'yyyy-mm-dd') LIKE '%'||#{searchValue}||'%'
+					</when>
+				</choose>
+			</trim>
+		</if>
+	</select>
+	
+	<select id="list" resultType="mybatis.vo.MemoVO" parameterType="java.util.Map">
+		SELECT * FROM (
+		    SELECT rownum rnum,a.* FROM(
+		        SELECT * FROM memo_t ORDER BY idx DESC
+		    ) a 
+		) WHERE rnum BETWEEN #{begin} AND #{end}
+	</select>
+	
+	<!-- 수정을 위한 UPDATE -->
+	
+</mapper>
+
+
+
+
+
+

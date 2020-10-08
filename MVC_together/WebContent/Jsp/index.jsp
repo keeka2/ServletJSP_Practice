@@ -99,20 +99,16 @@
 				<!-- 공지사항 -->
 				<div class="board_type01 fl">
 					<p class="title">공지사항</p>
-					<span class="more_view"><a href="">더보기</a></span>
+					<span class="more_view"><a href="Controller?type=notice">더보기</a></span>
 					<ul class="notice">
-						<li>
-							<a href="">T-together리뉴얼 오픈입니다.</a>
-							<span class="date">2020.08.20</span>
-						</li>
-						<li>
-							<a href="">SUMMER 이벤트 당첨자발표</a>
-							<span class="date">2020.08.17</span>
-						</li>
-						<li>
-							<a href="">글로벌아이티인재개발원 안내</a>
-							<span class="date">2020.08.15</span>
-						</li>
+					<c:if test="${list3 != null}">
+						<c:forEach items="${list3}" var="vo">
+							<li>
+								<a href="" text-overflow="ellipsis">${vo.content}</a>
+								<span class="date">${vo.reg_date.substring(0,10)}</span>
+							</li>
+						</c:forEach>
+					</c:if>
 					</ul>
 				</div>
 				<!-- 공지사항 끝-->
@@ -164,7 +160,7 @@
 					고객상담: 국번없이 004 혹은 02-1234-1234 (평일 09:30~17:00)
 				</address>
 				<p class="copyright">
-					COPYRIGHT (c) 2020 SK Telecom. All rights reserved.
+					COPYRIGHT (c) 2020 JSK Telecom. All rights reserved.
 				</p>
 			</div>
 		</div>

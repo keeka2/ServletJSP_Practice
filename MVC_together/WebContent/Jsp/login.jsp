@@ -114,7 +114,7 @@ href="css/login.css"/>
 				고객상담: 국번없이 004 혹은 02-1234-1234 (평일 09:30~17:00)
 			</address>
 			<p class="copyright">
-				COPYRIGHT (c) 2020 SK Telecom. All rights reserved.
+				COPYRIGHT (c) 2020 JSK Telecom. All rights reserved.
 			</p>
 		</div>
 	</div>

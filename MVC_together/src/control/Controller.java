@@ -13,6 +13,8 @@ import model.Action;
 import model.IndexAction;
 import model.LoginAction;
 import model.LogoutAction;
+import model.NoticeAction;
+import model.SearchAction;
 
 /**
  * Servlet implementation class Controller
@@ -42,6 +44,11 @@ public class Controller extends HttpServlet {
 			action = new LoginAction();
 		}else if(type.equals("logout")) {
 			action = new LogoutAction();
+		}else if(type.equals("notice")) {
+			action = new NoticeAction();
+		}else if(type.equals("search")) {
+			System.out.println("search");
+			action = new SearchAction();
 		}
 		viewPath = action.execute(request, response);
 		RequestDispatcher disp = request.getRequestDispatcher(viewPath);
