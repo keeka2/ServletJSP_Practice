@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="board">
+	<resultMap type="mybatis.vo.BoardVO" id="map1">
+		<id column="post_idx" property="post_idx"/>
+		<collection property="comment_List" select="comment_list" column="post_idx"></collection>
+	</resultMap>
+	
+	<select id="comment_list" parameterType="String" resultType="mybatis.vo.CommentVO">
+		SELECT * FROM comment_b WHERE post_idx=#{post_idx}
+	</select>
+	
+	
+	<select id="list" parameterType="java.util.Map" resultMap="map1">
+		SELECT * FROM(
+			SELECT rownum r_num, a.* FROM (
+				SELECT * FROM board 
+				WHERE status = 1 and board_subject=#{subject} 
+				ORDER BY post_idx DESC) a
+			) WHERE r_num BETWEEN #{begin} AND #{end}
+		
+	</select>
+	
+	<select id="totalCount" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM board WHERE status=1 AND board_subject=#{subject}
+	</select>
+	
+	<insert id="insertPost" parameterType="mybatis.vo.BoardVO">
+		INSERT INTO board(post_idx,writer_idx,title,content,board_subject, file_name,write_date,ip, hit,status) 
+		VALUES(board_SEQ.NEXTVAL,2,#{title},#{content},'a',#{file_name},sysdate,#{ip},0,1)
+	</insert>
+
+</mapper>

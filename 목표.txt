@@ -1,0 +1,25 @@
+게시판
+TODO
+채팅
+
+CRUD
+
+윈도우, 언어, 프레임워크, 구조(Spring(MVC), DB...)
+
+자바 사용 이유: JVM(가상머신), GC
+
+JAVA - Pr 언어
+JSP - template엔진, 프로그래밍 언어(반복문 가능)
+SQL - DB조작
+SQ - 구조적인 모든 것(uri)
+스프링과 JSP 구조
+스프링 특징
+라이브러리 프레임워크 차이 - 라이브러리: 내가 주도적으로 갖다 씀 / 프레임워크: 내가 짠 코드를 갖다 씀
+
+
+HTML/ CSS/ Markup Lang - Pr 언어X(알고리즘 못만듬) - 정적
+
+https://github.com/devJang/developer-roadmap
+uri -> dns -> ip -> [공유기] -> 라우터 -> 통신사 -> ... -> 네이버
+
+https://blog.naver.com/pjt3591oo
